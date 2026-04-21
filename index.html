@@ -205,15 +205,50 @@ nav {
   max-width: 300px;
 }
 
+/* ── HTB Activity Section ──────────────────────────────────────── */
+#htb-activity { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.activity-card {
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+}
+.activity-card:hover {
+  transform: translateX(5px);
+  background: var(--bg3);
+  border-color: var(--accent);
+  box-shadow: var(--glow-sm);
+}
+.activity-info { display: flex; flex-direction: column; gap: 6px; }
+.activity-type { color: var(--accent); font-size: 11px; letter-spacing: 0.15em; font-weight: 600; }
+.activity-title { color: #fff; font-size: 18px; font-weight: 700; font-family: 'Syne', sans-serif;}
+.activity-date { color: var(--text-dim); font-size: 12px; }
+.activity-points { 
+  background: var(--bg2); 
+  padding: 6px 12px; 
+  border-radius: 6px; 
+  color: var(--accent); 
+  font-size: 14px; 
+  font-weight: 700; 
+  border: 1px solid var(--border); 
+}
+
 /* ── Certifications Section (Redesigned & Eye-Catching) ──────── */
-#certifications { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+#certifications { background: var(--bg); border-bottom: 1px solid var(--border); }
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 24px;
 }
 .cert-card {
-  background: var(--bg);
+  background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 30px 20px;
@@ -304,41 +339,6 @@ nav {
   border-radius: 6px;
 }
 
-/* ── HTB Activity Section ──────────────────────────────────────── */
-#htb-activity { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.activity-card {
-  background: var(--bg2);
-  border-left: 3px solid var(--accent);
-  padding: 20px 24px;
-  margin-bottom: 16px;
-  border-radius: 0 8px 8px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-}
-.activity-card:hover {
-  transform: translateX(5px);
-  background: var(--bg3);
-  border-color: var(--accent);
-  box-shadow: var(--glow-sm);
-}
-.activity-info { display: flex; flex-direction: column; gap: 6px; }
-.activity-type { color: var(--accent); font-size: 11px; letter-spacing: 0.15em; font-weight: 600; }
-.activity-title { color: #fff; font-size: 18px; font-weight: 700; font-family: 'Syne', sans-serif;}
-.activity-date { color: var(--text-dim); font-size: 12px; }
-.activity-points { 
-  background: var(--bg); 
-  padding: 6px 12px; 
-  border-radius: 6px; 
-  color: var(--accent); 
-  font-size: 14px; 
-  font-weight: 700; 
-  border: 1px solid var(--border); 
-}
-
 /* ── Projects Section (Manual) ──────────────────────────────────── */
 #projects { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .projects-grid {
@@ -427,9 +427,9 @@ footer span { color: var(--accent); }
   <div class="nav-inner">
     <div class="nav-logo"><span>//</span> Saim Raza</div>
     <div class="nav-links">
+      <a href="#htb-activity">Activity</a>
       <a href="#certifications">Certifications</a>
       <a href="#skills">Skills</a>
-      <a href="#htb-activity">Activity</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
@@ -463,10 +463,24 @@ footer span { color: var(--accent); }
   </div>
 </section>
 
-<section id="certifications">
+<section id="htb-activity">
   <div class="container">
     <div class="sec-header">
       <span class="sec-num">01.</span>
+      <h2 class="sec-title">Recent HTB Activity</h2>
+      <div class="sec-line"></div>
+    </div>
+    
+    <div id="activity-feed">
+      <p class="loading-text" style="color:var(--text-dim)">// Querying HackTheBox Profile...</p>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-num">02.</span>
       <h2 class="sec-title">Certifications</h2>
       <div class="sec-line"></div>
     </div>
@@ -535,7 +549,7 @@ footer span { color: var(--accent); }
 <section id="skills">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">02.</span>
+      <span class="sec-num">03.</span>
       <h2 class="sec-title">Core Competencies</h2>
       <div class="sec-line"></div>
     </div>
@@ -573,20 +587,6 @@ footer span { color: var(--accent); }
           <span class="skill-tag">Markdown</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="htb-activity">
-  <div class="container">
-    <div class="sec-header">
-      <span class="sec-num">03.</span>
-      <h2 class="sec-title">Recent HTB Activity</h2>
-      <div class="sec-line"></div>
-    </div>
-    
-    <div id="activity-feed">
-      <p class="loading-text" style="color:var(--text-dim)">// Querying HackTheBox Profile...</p>
     </div>
   </div>
 </section>

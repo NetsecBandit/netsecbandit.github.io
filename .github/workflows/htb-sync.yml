@@ -2,18 +2,22 @@ name: HTB Activity Sync
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight UTC
-  workflow_dispatch: # Allows you to run it manually by clicking a button
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+# Explicitly grant permissions to push the JSON file to your repo
+permissions:
+  contents: write
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Updated to fix Node.js warning
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Updated to fix Node.js warning
         with:
           python-version: '3.10'
 
@@ -29,6 +33,11 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add htb_activity.json
-          git commit -m "Auto-update HTB activity [skip ci]" || echo "No changes to commit"
-          git push
+          # Only attempt to add the file if it was successfully created
+          if [ -f htb_activity.json ]; then
+            git add htb_activity.json
+            git commit -m "Auto-update HTB activity [skip ci]" || echo "No changes to commit"
+            git push
+          else
+            echo "htb_activity.json was not created. Check python script output."
+          fi

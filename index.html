@@ -919,7 +919,7 @@ async function loadHTBActivity() {
       return;
     }
 
-    const recent = activities.slice(0, 3);
+    const recent = activities.slice(0, 4);
     
     container.innerHTML = recent.map(item => {
       const type = item.object_type || item.type || 'SYSTEM OWN';

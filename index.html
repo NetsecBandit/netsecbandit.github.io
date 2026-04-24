@@ -206,7 +206,7 @@ nav {
   border: 1px solid var(--border-hi);
   border-radius: 10px;
   padding: 20px 24px;
-  max-width: 540px;
+  max-width: 600px;
   box-shadow: var(--glow-sm), inset 0 1px 0 rgba(168,85,247,0.15);
   animation: fadeUp 0.7s 0.8s forwards;
   opacity: 0;
@@ -216,9 +216,9 @@ nav {
 .terminal-box::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--grad); border-radius: 10px 10px 0 0; }
 .terminal-body { margin-top: 20px; }
 .t-line { display: flex; gap: 8px; margin: 6px 0; }
-.t-prompt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
+.t-prompt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; white-space: nowrap;}
 .t-cmd { color: var(--text); }
-.t-output { color: var(--text-dim); padding-left: 16px; margin-bottom: 8px; }
+.t-output { color: var(--text-dim); padding-left: 16px; margin-bottom: 8px; line-height: 1.6;}
 .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--violet); vertical-align: middle; animation: blink 1s step-end infinite; box-shadow: 0 0 8px var(--violet); }
 
 .hero-cta { margin-top: 36px; display: flex; gap: 16px; animation: fadeUp 0.7s 1.0s forwards; opacity: 0; }
@@ -299,7 +299,7 @@ nav {
 /* ── Projects Section ──────────────────────────────────────────── */
 #projects { background: linear-gradient(180deg, var(--bg2) 0%, var(--bg3) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
-.project-card { background: rgba(3,0,10,0.8); border: 1px solid var(--border); border-radius: 10px; padding: 24px; transition: all 0.3s; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.project-card { background: rgba(3,0,10,0.8); border: 1px solid var(--border); border-radius: 10px; padding: 24px; transition: all 0.3s; display: flex; flex-direction: column; position: relative; overflow: hidden; cursor: pointer; }
 .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
 .project-card:hover { border-color: var(--border-hi); transform: translateY(-5px); box-shadow: var(--glow-sm); }
 .project-card:hover::before { transform: scaleX(1); }
@@ -385,7 +385,6 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
   <div class="nav-inner">
     <div class="nav-logo"><span>//</span> Saim Raza</div>
     <div class="nav-links">
-      <a href="#about">About</a>
       <a href="#htb-activity">Activity</a>
       <a href="#certifications">Certs</a>
       <a href="#pro-labs">Pro Labs</a>
@@ -412,6 +411,8 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
         <div class="t-output">Penetration Tester</div>
         <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cmd">cat focus.txt</span></div>
         <div class="t-output">Vulnerability Assessment · Network Pentesting · Web Application Testing</div>
+        <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cmd">cat aboutme.txt</span></div>
+        <div class="t-output">I am a passionate Penetration Tester specializing in identifying and exploiting vulnerabilities across networks, web applications, and Active Directory environments. I build custom tooling and thrive on conquering advanced simulation labs and documenting technical research.</div>
         <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cursor"></span></div>
       </div>
     </div>
@@ -423,43 +424,10 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
   </div>
 </section>
 
-<section id="about">
-  <div class="container">
-    <div class="sec-header">
-      <span class="sec-num">01.</span>
-      <h2 class="sec-title">About Me</h2>
-      <div class="sec-line"></div>
-    </div>
-    
-    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
-      <div style="flex: 1; min-width: 300px; color: var(--text-dim); line-height: 1.8; font-size: 15px;">
-        <p style="margin-bottom: 16px;">I am a passionate <strong style="color:var(--violet)">Penetration Tester</strong> and Cybersecurity Researcher based in Sialkot, Pakistan. My journey into offensive security started with a deep curiosity about how systems work under the hood, which naturally evolved into learning how to break them—and secure them.</p>
-        <p style="margin-bottom: 16px;">I specialize in Network Penetration Testing, Web Application Security, and Active Directory exploitation. I spend my time hunting for vulnerabilities, writing custom exploit tooling, and conquering advanced simulation labs like Hack The Box Pro Labs.</p>
-        <p>When I'm not auditing infrastructure, I am documenting my findings, contributing to the infosec community, and focusing on continuous skill development.</p>
-      </div>
-      <div style="flex: 1; min-width: 300px;">
-         <div class="terminal-box" style="margin: 0; width: 100%; box-shadow: none;">
-            <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cmd">cat profile.json</span></div>
-            <div class="t-output" style="color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
-              {<br>
-              &nbsp;&nbsp;"name": "Saim Raza",<br>
-              &nbsp;&nbsp;"role": "Penetration Tester",<br>
-              &nbsp;&nbsp;"location": "Sialkot, PK",<br>
-              &nbsp;&nbsp;"focus": ["Red Teaming", "WebApp Sec", "AD Exploit"],<br>
-              &nbsp;&nbsp;"status": "Open to opportunities"<br>
-              }
-            </div>
-            <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cursor"></span></div>
-         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="htb-activity">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">02.</span>
+      <span class="sec-num">01.</span>
       <h2 class="sec-title">Recent HTB Activity</h2>
       <div class="sec-line"></div>
     </div>
@@ -473,7 +441,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="certifications">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">03.</span>
+      <span class="sec-num">02.</span>
       <h2 class="sec-title">Certifications</h2>
       <div class="sec-line"></div>
     </div>
@@ -482,7 +450,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
       
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="CPTS.png" alt="CPTS Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="/Certs-Images/CPTS.webp" alt="CPTS Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CPTS<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -493,7 +461,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="CWES.png" alt="CWES Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="/Certs-Images/CWES.webp" alt="CWES Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CWES<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -504,7 +472,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="CJCA.png" alt="CJCA Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="/Certs-Images/CJCA.webp" alt="CJCA Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CJCA<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -515,7 +483,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="OSCC.png" alt="OSCC Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="/Certs-Images/OSCC.webp" alt="OSCC Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">OSCC<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -526,7 +494,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="CISCO.png" alt="CISCO Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="/Certs-Images/CISCO.webp" alt="CISCO Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CISCO<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -542,7 +510,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="pro-labs">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">04.</span>
+      <span class="sec-num">03.</span>
       <h2 class="sec-title">Pro Labs</h2>
       <div class="sec-line"></div>
     </div>
@@ -789,7 +757,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="skills">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">05.</span>
+      <span class="sec-num">04.</span>
       <h2 class="sec-title">Core Competencies</h2>
       <div class="sec-line"></div>
     </div>
@@ -834,7 +802,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="projects">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">06.</span>
+      <span class="sec-num">05.</span>
       <h2 class="sec-title">Projects & Research</h2>
       <div class="sec-line"></div>
     </div>
@@ -894,7 +862,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="contact">
   <div class="container">
     <div class="sec-header" style="justify-content:center;margin-bottom:16px">
-      <span class="sec-num">07.</span>
+      <span class="sec-num">06.</span>
       <h2 class="sec-title">Initiate Handshake</h2>
     </div>
     <p class="contact-sub">Currently exploring new opportunities in penetration testing and offensive security roles.</p>

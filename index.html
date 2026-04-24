@@ -310,7 +310,7 @@ nav {
 .project-link { color: var(--text-dim); font-size: 12px; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; border-bottom: 1px solid var(--border); padding-bottom: 2px; }
 .project-link:hover { color: var(--violet); border-color: var(--violet); }
 
-/* Blog Carousel Styles */
+/* Blog & Project Carousel Styles */
 .sub-header { margin: 60px 0 30px 0; font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 700; color: #fff; border-left: 4px solid var(--violet); padding-left: 12px; }
 .blog-carousel-wrapper { display: flex; align-items: center; gap: 16px; position: relative; width: 100%; }
 .blog-carousel { 
@@ -321,7 +321,7 @@ nav {
 }
 .blog-carousel::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 .blog-carousel .project-card { 
-  min-width: 320px; max-width: 320px; scroll-snap-align: start; flex-shrink: 0; cursor: pointer;
+  min-width: 320px; max-width: 320px; scroll-snap-align: start; flex-shrink: 0;
 }
 .carousel-arrow {
   background: var(--bg2); border: 1px solid var(--border-hi); color: var(--violet);
@@ -385,11 +385,12 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
   <div class="nav-inner">
     <div class="nav-logo"><span>//</span> Saim Raza</div>
     <div class="nav-links">
+      <a href="#about">About</a>
       <a href="#htb-activity">Activity</a>
       <a href="#certifications">Certs</a>
       <a href="#pro-labs">Pro Labs</a>
       <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
+      <a href="#projects">Projects & Blogs</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -422,10 +423,43 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
   </div>
 </section>
 
-<section id="htb-activity">
+<section id="about">
   <div class="container">
     <div class="sec-header">
       <span class="sec-num">01.</span>
+      <h2 class="sec-title">About Me</h2>
+      <div class="sec-line"></div>
+    </div>
+    
+    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px; color: var(--text-dim); line-height: 1.8; font-size: 15px;">
+        <p style="margin-bottom: 16px;">I am a passionate <strong style="color:var(--violet)">Penetration Tester</strong> and Cybersecurity Researcher based in Sialkot, Pakistan. My journey into offensive security started with a deep curiosity about how systems work under the hood, which naturally evolved into learning how to break them—and secure them.</p>
+        <p style="margin-bottom: 16px;">I specialize in Network Penetration Testing, Web Application Security, and Active Directory exploitation. I spend my time hunting for vulnerabilities, writing custom exploit tooling, and conquering advanced simulation labs like Hack The Box Pro Labs.</p>
+        <p>When I'm not auditing infrastructure, I am documenting my findings, contributing to the infosec community, and focusing on continuous skill development.</p>
+      </div>
+      <div style="flex: 1; min-width: 300px;">
+         <div class="terminal-box" style="margin: 0; width: 100%; box-shadow: none;">
+            <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cmd">cat profile.json</span></div>
+            <div class="t-output" style="color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+              {<br>
+              &nbsp;&nbsp;"name": "Saim Raza",<br>
+              &nbsp;&nbsp;"role": "Penetration Tester",<br>
+              &nbsp;&nbsp;"location": "Sialkot, PK",<br>
+              &nbsp;&nbsp;"focus": ["Red Teaming", "WebApp Sec", "AD Exploit"],<br>
+              &nbsp;&nbsp;"status": "Open to opportunities"<br>
+              }
+            </div>
+            <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cursor"></span></div>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="htb-activity">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-num">02.</span>
       <h2 class="sec-title">Recent HTB Activity</h2>
       <div class="sec-line"></div>
     </div>
@@ -439,7 +473,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="certifications">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">02.</span>
+      <span class="sec-num">03.</span>
       <h2 class="sec-title">Certifications</h2>
       <div class="sec-line"></div>
     </div>
@@ -448,7 +482,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
       
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="/Certs-Images/CPTS.webp" alt="CPTS Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="CPTS.png" alt="CPTS Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CPTS<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -459,7 +493,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="/Certs-Images/CWES.webp" alt="CWES Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="CWES.png" alt="CWES Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CWES<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -470,7 +504,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="/Certs-Images/CJCA.webp" alt="CJCA Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="CJCA.png" alt="CJCA Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CJCA<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -481,7 +515,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="/Certs-Images/OSCC.webp" alt="OSCC Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="OSCC.png" alt="OSCC Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">OSCC<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -492,7 +526,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 
       <div class="cert-card">
         <div class="cert-logo">
-          <img src="/Certs-Images/CISCO.webp" alt="CISCO Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="CISCO.png" alt="CISCO Badge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span style="display:none;">CISCO<br>Image Missing</span>
         </div>
         <div class="cert-info">
@@ -508,7 +542,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="pro-labs">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">03.</span>
+      <span class="sec-num">04.</span>
       <h2 class="sec-title">Pro Labs</h2>
       <div class="sec-line"></div>
     </div>
@@ -755,7 +789,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="skills">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">04.</span>
+      <span class="sec-num">05.</span>
       <h2 class="sec-title">Core Competencies</h2>
       <div class="sec-line"></div>
     </div>
@@ -800,40 +834,46 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="projects">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">05.</span>
+      <span class="sec-num">06.</span>
       <h2 class="sec-title">Projects & Research</h2>
       <div class="sec-line"></div>
     </div>
 
-    <div class="projects-grid">
+    <div class="blog-carousel-wrapper">
+      <button class="carousel-arrow" onclick="scrollProjects('left')">❮</button>
       
-      <div class="project-card">
-        <div class="project-lang">// Active Directory</div>
-        <div class="project-name">Active Directory Attack Bible</div>
-        <div class="project-desc">A comprehensive guide to attacking Active Directory environments, including detailed methodologies and real-world scenarios.</div>
-        <div class="project-links">
-          <a href="https://github.com/NetsecBandit/AD-Attack-Bible" class="project-link" target="_blank">View Repo →</a>
+      <div class="blog-carousel" id="projects-carousel">
+        
+        <div class="project-card" style="cursor: default;">
+          <div class="project-lang">// Active Directory</div>
+          <div class="project-name">Active Directory Attack Bible</div>
+          <div class="project-desc">A comprehensive guide to attacking Active Directory environments, including detailed methodologies and real-world scenarios.</div>
+          <div class="project-links">
+            <a href="https://github.com/NetsecBandit/AD-Attack-Bible" class="project-link" target="_blank">View Repo →</a>
+          </div>
         </div>
+
+        <div class="project-card" style="cursor: default;">
+          <div class="project-lang">// Hack The Box</div>
+          <div class="project-name">HTB Writeups</div>
+          <div class="project-desc">Collection of writeups for various Hack The Box machines.</div>
+          <div class="project-links">
+            <a href="https://github.com/NetsecBandit/Hack-The-Box" class="project-link" target="_blank">View Repo →</a>
+          </div>
+        </div>
+
+        <div class="project-card" style="cursor: default;">
+          <div class="project-lang">// Networking</div>
+          <div class="project-name">Net Probe</div>
+          <div class="project-desc">Custom tooling built to automate the enumeration of network services and finding vulnerabilities.</div>
+          <div class="project-links">
+            <a href="https://github.com/NetsecBandit/NetProbe" class="project-link" target="_blank">View Repo →</a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="project-card">
-        <div class="project-lang">// Hack The Box</div>
-        <div class="project-name">HTB Writeups</div>
-        <div class="project-desc">Collection of writeups for various Hack The Box machines.</div>
-        <div class="project-links">
-          <a href="https://github.com/NetsecBandit/Hack-The-Box" class="project-link" target="_blank">View Repo →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-lang">// Networking</div>
-        <div class="project-name">Net Probe</div>
-        <div class="project-desc">Custom tooling built to automate the enumeration of network services and finding vulnerabilities.</div>
-        <div class="project-links">
-          <a href="https://github.com/NetsecBandit/NetProbe" class="project-link" target="_blank">View Repo →</a>
-        </div>
-      </div>
-
+      <button class="carousel-arrow" onclick="scrollProjects('right')">❯</button>
     </div>
 
     <div class="sub-header">Technical Blogs & Findings</div>
@@ -854,7 +894,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="contact">
   <div class="container">
     <div class="sec-header" style="justify-content:center;margin-bottom:16px">
-      <span class="sec-num">06.</span>
+      <span class="sec-num">07.</span>
       <h2 class="sec-title">Initiate Handshake</h2>
     </div>
     <p class="contact-sub">Currently exploring new opportunities in penetration testing and offensive security roles.</p>
@@ -884,14 +924,42 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 </div>
 
 <script>
-// ── INFINITE MARQUEE LOGIC ─────────────────────────────────────────
+// ── SAFE DOM LOADER ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", function() {
+  
+  // Infinite Marquee Logic
   const track = document.getElementById('labs-track');
   if(track) {
     const content = track.innerHTML;
     track.innerHTML = content + content;
   }
+
+  // Close Blog Button Listener
+  const closeBtn = document.getElementById('closeBlogBtn');
+  if(closeBtn) {
+    closeBtn.addEventListener('click', closeBlog);
+  }
+
+  // Click Outside Modal Listener
+  const modal = document.getElementById('blogModal');
+  if(modal) {
+    modal.addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeBlog();
+      }
+    });
+  }
+
 });
+
+// Escape Key Listener
+document.addEventListener('keydown', function(event) {
+  const modal = document.getElementById('blogModal');
+  if (event.key === "Escape" && modal && modal.style.display === 'block') {
+    closeBlog();
+  }
+});
+
 
 // ── HTB ACTIVITY API FETCH ─────────────────────────────────────────
 async function loadHTBActivity() {
@@ -946,6 +1014,7 @@ async function loadHTBActivity() {
 }
 
 loadHTBActivity();
+
 
 // ── AUTOMATED GITHUB BLOG FETCHING ─────────────────────────────────
 async function loadDynamicBlogs() {
@@ -1008,6 +1077,7 @@ async function loadDynamicBlogs() {
 }
 loadDynamicBlogs();
 
+
 // ── HORIZONTAL SCROLL LOGIC ──────────────────────────────────────────
 function scrollBlog(direction) {
   const carousel = document.getElementById('blog-grid');
@@ -1019,31 +1089,23 @@ function scrollBlog(direction) {
   }
 }
 
-// ── BLOG MODAL OVERLAY & CLOSE LOGIC ───────────────────────────────────────
+function scrollProjects(direction) {
+  const carousel = document.getElementById('projects-carousel');
+  const scrollAmount = 344; // Card width + gap
+  if (direction === 'left') {
+    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  } else {
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+}
+
+
+// ── BLOG MODAL FETCH & CLOSE FUNCTIONS ───────────────────────────────────────
 function closeBlog() {
   document.getElementById('blogModal').style.display = 'none';
   document.body.style.overflow = 'auto'; 
 }
 
-// Close button click listener
-document.getElementById('closeBlogBtn').addEventListener('click', closeBlog);
-
-// Click outside listener
-document.getElementById('blogModal').addEventListener('click', function(event) {
-  // If the user clicks exactly on the dark overlay background, close the modal
-  if (event.target === this) {
-    closeBlog();
-  }
-});
-
-// Escape key listener
-document.addEventListener('keydown', function(event) {
-  if (event.key === "Escape" && document.getElementById('blogModal').style.display === 'block') {
-    closeBlog();
-  }
-});
-
-// ── BLOG MODAL FETCH & IMAGES FOLDER LOGIC ──────────────────────
 async function openBlog(rawMarkdownUrl) {
   const modal = document.getElementById('blogModal');
   const content = document.getElementById('blogContent');
@@ -1057,10 +1119,9 @@ async function openBlog(rawMarkdownUrl) {
     if (!res.ok) throw new Error('Failed to fetch markdown file.');
     const text = await res.text();
     
-    // Parse Markdown to HTML
     content.innerHTML = marked.parse(text);
 
-    // FIX BROKEN IMAGES: Route all image paths to your 'Images' directory
+    // FIX BROKEN IMAGES
     const baseUrl = rawMarkdownUrl.substring(0, rawMarkdownUrl.lastIndexOf('/') + 1);
     const images = content.querySelectorAll('img');
     

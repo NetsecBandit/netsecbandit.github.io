@@ -1020,7 +1020,7 @@ function scrollBlog(direction) {
   }
 }
 
-// ── NEW: BLOG MODAL WITH DIRECT IMAGES FOLDER LOGIC ──────────────────────
+// ── BLOG MODAL WITH BULLETPROOF IMAGES LOGIC ──────────────────────
 async function openBlog(rawMarkdownUrl) {
   const modal = document.getElementById('blogModal');
   const content = document.getElementById('blogContent');
@@ -1037,35 +1037,36 @@ async function openBlog(rawMarkdownUrl) {
     // Parse Markdown to HTML
     content.innerHTML = marked.parse(text);
 
-    // FIX BROKEN IMAGES: Route all relative image paths to your 'Images' directory
+    // FIX BROKEN IMAGES: Bulletproof routing
     const baseUrl = rawMarkdownUrl.substring(0, rawMarkdownUrl.lastIndexOf('/') + 1);
     const images = content.querySelectorAll('img');
     
     images.forEach(img => {
       let src = img.getAttribute('src');
-      if (src && !src.startsWith('http') && !src.startsWith('data:')) {
-        // Strip out any existing 'Images/' or './' from the markdown to prevent duplication
-        src = src.replace(/^(\.\/)?(Images\/)?/i, '');
-        // Force the path to look inside your new Images directory
-        img.src = baseUrl + 'Images/' + src;
+      if (!src) return;
+
+      // SCENARIO 1: You accidentally used the standard github.com link instead of the Raw link
+      if (src.includes('github.com') && src.includes('/blob/')) {
+        img.src = src.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+        return;
       }
+
+      // SCENARIO 2: It's a standard external image link (leave it alone)
+      if (src.startsWith('http') || src.startsWith('data:')) {
+        return;
+      }
+
+      // SCENARIO 3: It's a local/relative file
+      // This aggressively strips away "/", "./", "Images/", or "images/" so we just get the pure filename
+      let cleanFilename = src.replace(/^(\/|\.\/)?([Ii]mages\/)?/i, '');
+
+      // Force the correct absolute raw path to your repo's Images directory
+      img.src = baseUrl + 'Images/' + cleanFilename;
     });
 
   } catch(error) {
     console.error("Blog Read Error:", error);
     content.innerHTML = '<p style="color:var(--magenta)">// ERROR 404: Document could not be retrieved or decrypted.</p>';
-  }
-}
-
-function closeBlog() {
-  document.getElementById('blogModal').style.display = 'none';
-  document.body.style.overflow = 'auto'; 
-}
-
-window.onclick = function(event) {
-  const modal = document.getElementById('blogModal');
-  if (event.target == modal) {
-    closeBlog();
   }
 }
 </script>

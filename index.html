@@ -262,24 +262,97 @@ nav {
 .cert-info h3 { font-size: 18px; color: var(--text); margin-bottom: 6px; font-family: 'Syne', sans-serif; }
 .cert-info p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
 
-/* ── Pro Labs Section ─────────────────────── */
-#pro-labs { background: var(--bg2); border-bottom: 1px solid var(--border); overflow: hidden; position: relative; }
-.labs-marquee { display: flex; overflow: hidden; position: relative; width: 100%; padding: 10px 0 30px; }
-.labs-marquee::before, .labs-marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 10; pointer-events: none; }
+/* ── Pro Labs Section (Horizontal Marquee) ─────────────────────── */
+#pro-labs {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+.labs-marquee {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 10px 0 30px;
+}
+
+/* Gradient fades on the left and right edges */
+.labs-marquee::before, .labs-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
 .labs-marquee::before { left: 0; background: linear-gradient(to right, var(--bg2), transparent); }
 .labs-marquee::after { right: 0; background: linear-gradient(to left, var(--bg2), transparent); }
-.labs-track { display: flex; gap: 24px; width: max-content; animation: scrollMarquee 40s linear infinite; padding-right: 24px; }
+
+.labs-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scrollMarquee 40s linear infinite;
+  padding-right: 24px;
+}
+
 .labs-track:hover { animation-play-state: paused; }
 @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-.lab-card { width: 320px; flex-shrink: 0; background: rgba(3,0,10,0.8); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; position: relative; }
-.lab-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; z-index: 2; }
-.lab-card:hover { border-color: var(--border-hi); transform: translateY(-5px); box-shadow: var(--glow-sm); }
+.lab-card {
+  width: 320px;
+  flex-shrink: 0;
+  background: rgba(3,0,10,0.8);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.lab-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--grad);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s;
+  z-index: 2;
+}
+.lab-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-5px);
+  box-shadow: var(--glow-sm);
+}
 .lab-card:hover::before { transform: scaleX(1); }
-.lab-img { width: 100%; height: 170px; background: var(--bg3); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.lab-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.3s; }
+
+.lab-img {
+  width: 100%; height: 170px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lab-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: all 0.3s;
+}
 .lab-card:hover .lab-img img { opacity: 1; transform: scale(1.05); }
-.lab-img span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 11px; letter-spacing: 0.1em; }
+.lab-img span {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); font-size: 11px; letter-spacing: 0.1em;
+}
+
 .lab-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
 .lab-name { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 6px; font-family: 'Syne', sans-serif;}
 .lab-desc { color: var(--text-dim); font-size: 13px; line-height: 1.5; margin-bottom: 16px; flex-grow: 1;}
@@ -316,10 +389,10 @@ nav {
 .blog-carousel { 
   display: flex; overflow-x: auto; gap: 24px; padding: 10px 0 20px; 
   scroll-behavior: smooth; scroll-snap-type: x mandatory; 
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none; 
   flex-grow: 1;
 }
-.blog-carousel::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+.blog-carousel::-webkit-scrollbar { display: none; }
 .blog-carousel .project-card { 
   min-width: 320px; max-width: 320px; scroll-snap-align: start; flex-shrink: 0; cursor: pointer;
 }
@@ -381,11 +454,12 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
   <div class="nav-inner">
     <div class="nav-logo"><span>//</span> Saim Raza</div>
     <div class="nav-links">
+      <a href="#about">About</a>
       <a href="#htb-activity">Activity</a>
       <a href="#certifications">Certs</a>
       <a href="#pro-labs">Pro Labs</a>
       <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
+      <a href="#projects">Projects & Blogs</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -418,10 +492,43 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
   </div>
 </section>
 
-<section id="htb-activity">
+<section id="about">
   <div class="container">
     <div class="sec-header">
       <span class="sec-num">01.</span>
+      <h2 class="sec-title">About Me</h2>
+      <div class="sec-line"></div>
+    </div>
+    
+    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px; color: var(--text-dim); line-height: 1.8; font-size: 15px;">
+        <p style="margin-bottom: 16px;">I am a passionate <strong style="color:var(--violet)">Penetration Tester</strong> and Cybersecurity Researcher based in Sialkot, Pakistan. My journey into offensive security started with a deep curiosity about how systems work under the hood, which naturally evolved into learning how to break them—and secure them.</p>
+        <p style="margin-bottom: 16px;">I specialize in Network Penetration Testing, Web Application Security, and Active Directory exploitation. I spend my time hunting for vulnerabilities, writing custom exploit tooling, and conquering advanced simulation labs like Hack The Box Pro Labs.</p>
+        <p>When I'm not auditing infrastructure, I am documenting my findings, contributing to the infosec community, and focusing on continuous skill development.</p>
+      </div>
+      <div style="flex: 1; min-width: 300px;">
+         <div class="terminal-box" style="margin: 0; width: 100%; box-shadow: none;">
+            <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cmd">cat profile.json</span></div>
+            <div class="t-output" style="color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+              {<br>
+              &nbsp;&nbsp;"name": "Saim Raza",<br>
+              &nbsp;&nbsp;"role": "Penetration Tester",<br>
+              &nbsp;&nbsp;"location": "Sialkot, PK",<br>
+              &nbsp;&nbsp;"focus": ["Red Teaming", "WebApp Sec", "AD Exploit"],<br>
+              &nbsp;&nbsp;"status": "Open to opportunities"<br>
+              }
+            </div>
+            <div class="t-line"><span class="t-prompt">netsec@kali:~$</span><span class="t-cursor"></span></div>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="htb-activity">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-num">02.</span>
       <h2 class="sec-title">Recent HTB Activity</h2>
       <div class="sec-line"></div>
     </div>
@@ -435,7 +542,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="certifications">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">02.</span>
+      <span class="sec-num">03.</span>
       <h2 class="sec-title">Certifications</h2>
       <div class="sec-line"></div>
     </div>
@@ -504,7 +611,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="pro-labs">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">03.</span>
+      <span class="sec-num">04.</span>
       <h2 class="sec-title">Pro Labs</h2>
       <div class="sec-line"></div>
     </div>
@@ -751,7 +858,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="skills">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">04.</span>
+      <span class="sec-num">05.</span>
       <h2 class="sec-title">Core Competencies</h2>
       <div class="sec-line"></div>
     </div>
@@ -796,8 +903,8 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="projects">
   <div class="container">
     <div class="sec-header">
-      <span class="sec-num">05.</span>
-      <h2 class="sec-title">Projects</h2>
+      <span class="sec-num">06.</span>
+      <h2 class="sec-title">Projects & Research</h2>
       <div class="sec-line"></div>
     </div>
 
@@ -850,7 +957,7 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 <section id="contact">
   <div class="container">
     <div class="sec-header" style="justify-content:center;margin-bottom:16px">
-      <span class="sec-num">06.</span>
+      <span class="sec-num">07.</span>
       <h2 class="sec-title">Initiate Handshake</h2>
     </div>
     <p class="contact-sub">Currently exploring new opportunities in penetration testing and offensive security roles.</p>
@@ -880,14 +987,43 @@ footer span { background: var(--grad); -webkit-background-clip: text; -webkit-te
 </div>
 
 <script>
-// ── INFINITE MARQUEE LOGIC ─────────────────────────────────────────
+// ── SAFE DOM LOADER ────────────────────────────────────────────────
+// Wrapping all listeners to guarantee they don't fire until the page is fully built
 document.addEventListener("DOMContentLoaded", function() {
+  
+  // Infinite Marquee Logic
   const track = document.getElementById('labs-track');
   if(track) {
     const content = track.innerHTML;
     track.innerHTML = content + content;
   }
+
+  // Close Blog Button Listener
+  const closeBtn = document.getElementById('closeBlogBtn');
+  if(closeBtn) {
+    closeBtn.addEventListener('click', closeBlog);
+  }
+
+  // Click Outside Modal Listener
+  const modal = document.getElementById('blogModal');
+  if(modal) {
+    modal.addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeBlog();
+      }
+    });
+  }
+
 });
+
+// Escape Key Listener
+document.addEventListener('keydown', function(event) {
+  const modal = document.getElementById('blogModal');
+  if (event.key === "Escape" && modal && modal.style.display === 'block') {
+    closeBlog();
+  }
+});
+
 
 // ── HTB ACTIVITY API FETCH ─────────────────────────────────────────
 async function loadHTBActivity() {
@@ -942,6 +1078,7 @@ async function loadHTBActivity() {
 }
 
 loadHTBActivity();
+
 
 // ── AUTOMATED GITHUB BLOG FETCHING ─────────────────────────────────
 async function loadDynamicBlogs() {
@@ -1004,6 +1141,7 @@ async function loadDynamicBlogs() {
 }
 loadDynamicBlogs();
 
+
 // ── HORIZONTAL SCROLL LOGIC ──────────────────────────────────────────
 function scrollBlog(direction) {
   const carousel = document.getElementById('blog-grid');
@@ -1015,32 +1153,13 @@ function scrollBlog(direction) {
   }
 }
 
-// ── BLOG MODAL OVERLAY & CLOSE LOGIC ───────────────────────────────────────
+
+// ── BLOG MODAL FETCH & CLOSE FUNCTIONS ───────────────────────────────────────
 function closeBlog() {
   document.getElementById('blogModal').style.display = 'none';
   document.body.style.overflow = 'auto'; 
 }
 
-// Close button click listener
-document.getElementById('closeBlogBtn').addEventListener('click', closeBlog);
-
-// Click outside listener
-document.getElementById('blogModal').addEventListener('click', function(event) {
-  // If the user clicks exactly on the dark overlay background, close the modal
-  if (event.target === this) {
-    closeBlog();
-  }
-});
-
-// Escape key listener
-document.addEventListener('keydown', function(event) {
-  if (event.key === "Escape" && document.getElementById('blogModal').style.display === 'block') {
-    closeBlog();
-  }
-});
-
-
-// ── BLOG MODAL FETCH & IMAGES FOLDER LOGIC ──────────────────────
 async function openBlog(rawMarkdownUrl) {
   const modal = document.getElementById('blogModal');
   const content = document.getElementById('blogContent');
@@ -1054,10 +1173,9 @@ async function openBlog(rawMarkdownUrl) {
     if (!res.ok) throw new Error('Failed to fetch markdown file.');
     const text = await res.text();
     
-    // Parse Markdown to HTML
     content.innerHTML = marked.parse(text);
 
-    // FIX BROKEN IMAGES: Route all image paths to your 'Images' directory
+    // FIX BROKEN IMAGES
     const baseUrl = rawMarkdownUrl.substring(0, rawMarkdownUrl.lastIndexOf('/') + 1);
     const images = content.querySelectorAll('img');
     

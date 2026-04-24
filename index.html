@@ -1015,7 +1015,7 @@ function scrollBlog(direction) {
   }
 }
 
-// ── BLOG MODAL WITH DIRECT IMAGES FOLDER LOGIC ──────────────────────
+// ── BLOG MODAL WITH IMAGE FIX LOGIC ─────────────────────────────────
 async function openBlog(rawMarkdownUrl) {
   const modal = document.getElementById('blogModal');
   const content = document.getElementById('blogContent');
@@ -1032,17 +1032,16 @@ async function openBlog(rawMarkdownUrl) {
     // Parse Markdown to HTML
     content.innerHTML = marked.parse(text);
 
-    // FIX BROKEN IMAGES: Route all relative image paths to your 'Images' directory
+    // FIX BROKEN IMAGES: Update relative image paths to absolute GitHub raw paths
+    // Grabs the base directory of where the markdown file is stored
     const baseUrl = rawMarkdownUrl.substring(0, rawMarkdownUrl.lastIndexOf('/') + 1);
     const images = content.querySelectorAll('img');
     
     images.forEach(img => {
-      let src = img.getAttribute('src');
+      const src = img.getAttribute('src');
+      // If the image doesn't start with http (meaning it's a relative local file)
       if (src && !src.startsWith('http') && !src.startsWith('data:')) {
-        // Strip out any existing 'Images/' or './' from the markdown to prevent duplication
-        src = src.replace(/^(\.\/)?(Images\/)?/i, '');
-        // Force the path to look inside your new Images directory
-        img.src = baseUrl + 'Images/' + src;
+        img.src = baseUrl + src;
       }
     });
 
